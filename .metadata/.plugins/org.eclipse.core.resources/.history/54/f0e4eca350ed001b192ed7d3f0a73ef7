@@ -1,0 +1,5 @@
+package com.cg.hostemmgmt.entity;
+
+public class Hostel {
+
+}
