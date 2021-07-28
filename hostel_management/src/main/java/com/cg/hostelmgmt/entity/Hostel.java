@@ -38,7 +38,7 @@ public class Hostel {
 	@OneToMany(mappedBy = "hostel")
 	private Set<Room> rooms;
 	@OneToMany(mappedBy = "hostel")
-	private Set<User> users;
+	private Set<Student> students;
 	
 	// Constructor
 	
@@ -135,12 +135,12 @@ public class Hostel {
 	}
 	
 
-	public Set<User> getUsers() {
-		return users;
+	public Set<Student> getstudents() {
+		return students;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setstudents(Set<Student> students) {
+		this.students = students;
 	}
 
 	public void setWarden(Warden warden) {

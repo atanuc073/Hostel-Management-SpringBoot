@@ -12,16 +12,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
-@Table(name="user")
-public class User {
+@Table(name="student")
+public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="user_id")
-	private Integer userId;
+	@Column(name="student_id")
+	private Integer studentId;
 	@Column(name="name")
 	private String name;
 	@Column(name="dob")
 	private LocalDate dob;
+	@Column(name="email_id")
+	private String emailId;
 	@Column(name="contact_number")
 	private String contactNumber;
 	@Column(name="gender")
@@ -42,34 +44,32 @@ public class User {
 	
 	
 	// Constructor
-	public User() {
+	public Student() {
 		super();
 	}
+	
 
-
-	public User(Integer userId, String name, LocalDate dob, String contactNumber, String gender, String image,
-			String address) {
+	public Student(Integer studentId, String name, LocalDate dob, String emailId, String contactNumber, String gender,
+			String image, String address) {
 		super();
-		this.userId = userId;
+		this.studentId = studentId;
 		this.name = name;
 		this.dob = dob;
+		this.emailId = emailId;
 		this.contactNumber = contactNumber;
 		this.gender = gender;
 		this.image = image;
 		this.address = address;
 	}
 
-	
+
+
+
+
+
+
 	// Getter and Setter
 	
-	public Integer getUserId() {
-		return userId;
-	}
-
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
 
 
 	public String getName() {
@@ -160,11 +160,32 @@ public class User {
 	public void setRoom(Room room) {
 		this.room = room;
 	}
+	
+
+
+	public Integer getStudentId() {
+		return studentId;
+	}
+
+
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
+	}
+
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
 
 
 	@Override
 	public String toString() {
-		return userId + "" + name + " " + dob + " " + contactNumber
+		return studentId + "" + name + " " + dob + " " + contactNumber
 				+ " " + gender + " " + image + " " + address + " ";
 	}
 	

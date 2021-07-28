@@ -31,7 +31,7 @@ public class Warden {
 	@OneToOne(mappedBy = "warden")
 	private Hostel hostel;
 	@OneToMany(mappedBy = "warden")
-	private Set<User> users;
+	private Set<Student> students;
 	
 	// constructor
 	
@@ -109,12 +109,12 @@ public class Warden {
 		this.hostel = hostel;
 	}
 
-	public Set<User> getUsers() {
-		return users;
+	public Set<Student> getstudents() {
+		return students;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setstudents(Set<Student> students) {
+		this.students = students;
 	}
 
 	@Override

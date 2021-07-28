@@ -27,7 +27,7 @@ public class Room {
 	@JoinColumn(name="hostel_id", referencedColumnName = "hostel_id")
 	private Hostel hostel;
 	@OneToMany(mappedBy = "room")
-	private Set<User> users;
+	private Set<Student> students;
 	
 	// Constructor
 	
@@ -85,20 +85,20 @@ public class Room {
 	}
 
 
-	public Set<User> getUsers() {
-		return users;
+	public Set<Student> getstudents() {
+		return students;
 	}
 
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setstudents(Set<Student> students) {
+		this.students = students;
 	}
 
 
 	@Override
 	public String toString() {
 		return roomId + " " + roomNo + " " + description + " " + hostel
-				+ " " + users + " ";
+				+ " " + students + " ";
 	}
 	
 	
