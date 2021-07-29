@@ -7,6 +7,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import com.cg.hostelmgmt.entity.Hostel;
+import com.cg.hostelmgmt.entity.Warden;
+
 public class StudentDto {
 	private Integer studentId;
 	@NotBlank(message = "Student Name can not be empty")
@@ -24,14 +27,23 @@ public class StudentDto {
 	@NotBlank(message="address should not be blank")
 	private String address;
 	
+	private Integer wardenId;
+	private Integer hostelID;
+	private Integer roomId;
+	
 	// constructor
 	public StudentDto() {
 		super();
 		
 	}
+	
+	
 
-	public StudentDto(Integer studentId, String name, LocalDate dob, String emailId, String contactNumber,
-			String gender, String image, String address) {
+
+
+	public StudentDto(Integer studentId, String name,LocalDate dob,String emailId,String contactNumber,String gender,
+			String image,String address, Integer wardenId,
+			Integer hostelID, Integer roomId) {
 		super();
 		this.studentId = studentId;
 		this.name = name;
@@ -41,10 +53,14 @@ public class StudentDto {
 		this.gender = gender;
 		this.image = image;
 		this.address = address;
+		this.wardenId = wardenId;
+		this.hostelID = hostelID;
+		this.roomId = roomId;
 	}
-
-	public StudentDto(String name, LocalDate dob, String emailId, String contactNumber, String gender, String image,
-			String address) {
+	
+	public StudentDto( String name,LocalDate dob,String emailId,String contactNumber,String gender,
+			String image,String address, Integer wardenId,
+			Integer hostelID, Integer roomId) {
 		super();
 		this.name = name;
 		this.dob = dob;
@@ -53,7 +69,14 @@ public class StudentDto {
 		this.gender = gender;
 		this.image = image;
 		this.address = address;
+		this.wardenId = wardenId;
+		this.hostelID = hostelID;
+		this.roomId = roomId;
 	}
+
+
+
+
 
 	public Integer getStudentId() {
 		return studentId;
@@ -118,6 +141,38 @@ public class StudentDto {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+
+	public Integer getWardenId() {
+		return wardenId;
+	}
+
+	public void setWardenId(Integer wardenId) {
+		this.wardenId = wardenId;
+	}
+
+
+	public Integer getHostelID() {
+		return hostelID;
+	}
+
+	public void setHostelID(Integer hostelID) {
+		this.hostelID = hostelID;
+	}
+
+
+	public Integer getRoomId() {
+		return roomId;
+	}
+
+
+
+
+
+	public void setRoomId(Integer roomId) {
+		this.roomId = roomId;
+	}
+	
 
 
 }

@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.cg.hostelmgmt.entity.Warden;
 @Repository
-public interface IWarden extends JpaRepository<Warden, Integer>{
+public interface IWardenDao extends JpaRepository<Warden, Integer>{
 
 }
