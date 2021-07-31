@@ -1,0 +1,19 @@
+Warden table
+insert into warden values(1001,"2 mg road delhi:34567","7658984512","male","sunil1001","sunil");
+insert into warden values(1002,"23 neheru road mumbai:30002","7658984512","male","rahul1001","rahul");
+
+
+Room Table 
+
+insert into rooms values(101,"clean south open room attached bathroom","R203",31);
+insert into rooms values(104,"wifi and Ac available south open room attached balcony","R203",32);
+
+Hostel Table
+
+insert into hostel values(31,"43 chadni market opposite waterpark delhi :400003","9087435761","parking lot,newly build Hostel,security guard,food provided",7000,"Hotel california","Male Hostel",1001);
+
+insert into hostel values(32,"43 Netaji market S.I road Bangalore :500003","8732435761","parking lot,newly build Hostel,security guard,food provided",7000,"Dream Land","Female Hostel",1002);
+
+Student table
+insert into student values(1001,"4 janata road kolkata:700034","8790654323",'1998-07-17',"sumit23@yahoo.com","male","sumit1001","sumit",31,101,1001);
+insert into student values(1002,"10 s.k road Mumbai:900035","9790622523",'1997-05-12',"sania223@yahoo.com","Female","sania1002","sania",32,104,1002);

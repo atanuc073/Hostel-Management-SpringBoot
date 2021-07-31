@@ -71,6 +71,7 @@ INDEX VERSION 1.131+/home/atanuc73/github/Hostel_management_springBoot/.metadata
 2295083246.index
 1535459326.index
 2554342441.index
+932721068.index
 1988113504.index
 1466601571.index
 3022727231.index

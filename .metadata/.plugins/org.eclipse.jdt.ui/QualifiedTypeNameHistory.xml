@@ -12,12 +12,9 @@
     <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
     <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
-    <fullyQualifiedTypeName name="com.cg.hostelmgmt.entity.Hostel"/>
     <fullyQualifiedTypeName name="com.cg.hostelmgmt.entity.User"/>
-    <fullyQualifiedTypeName name="com.cg.hostelmgmt.entity.Warden"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="com.cg.hostelmgmt.entity.Room"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
@@ -27,8 +24,21 @@
     <fullyQualifiedTypeName name="javax.validation.constraints.Email"/>
     <fullyQualifiedTypeName name="javax.validation.constraints.Pattern"/>
     <fullyQualifiedTypeName name="javax.validation.constraints.NotBlank"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="com.cg.hostelmgmt.entity.Student"/>
     <fullyQualifiedTypeName name="com.cg.hostelmgmt.exception.StudentNotFoundException"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.service.IStudentService"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.dao.IStudentDao"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.dao.IRoomDao"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.dao.IHostelDao"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.dao.IWardenDao"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.entity.Warden"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.entity.Hostel"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.entity.Room"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.entity.Student"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.service.StudentServiceImpl"/>
+    <fullyQualifiedTypeName name="com.cg.hostelmgmt.utils.StudentConstants"/>
 </qualifiedTypeNameHistroy>

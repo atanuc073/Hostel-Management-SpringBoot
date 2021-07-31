@@ -17,7 +17,9 @@ import com.cg.hostelmgmt.entity.Hostel;
 import com.cg.hostelmgmt.entity.Room;
 import com.cg.hostelmgmt.entity.Student;
 import com.cg.hostelmgmt.entity.Warden;
+import com.cg.hostelmgmt.exception.EmailIdAlreadyExistsException;
 import com.cg.hostelmgmt.exception.HostelNotFoundException;
+import com.cg.hostelmgmt.exception.MobileNumberNotFoundException;
 import com.cg.hostelmgmt.exception.PhoneNumberAlreadyExistsException;
 import com.cg.hostelmgmt.exception.RoomNotFoundException;
 import com.cg.hostelmgmt.exception.StudentNotFoundException;
@@ -35,11 +37,14 @@ public class StudentServiceImpl implements IStudentService{
 	
 
 	@Override
-	public Map<String, String> addStudent(StudentDto studentdto) throws WardenNotFoundException, HostelNotFoundException, RoomNotFoundException, PhoneNumberAlreadyExistsException {
+	public Student addStudent(StudentDto studentdto) throws WardenNotFoundException, HostelNotFoundException, RoomNotFoundException, PhoneNumberAlreadyExistsException, EmailIdAlreadyExistsException {
 		Student student = new Student();
 		
 		if(!this.checkPhoneNumber(studentdto.getContactNumber())) {
 			throw new PhoneNumberAlreadyExistsException(StudentConstants.CONTACT_NUMBER_ALREADY_EXISTS);
+		}
+		if(this.checkEmail(studentdto.getEmailId())) {
+			throw new EmailIdAlreadyExistsException(StudentConstants.EMAIL_ALREADY_EXISTS);
 		}
 		
 		Optional<Warden> optWarden =wardendao.findById(studentdto.getWardenId());
@@ -54,6 +59,7 @@ public class StudentServiceImpl implements IStudentService{
 			throw new HostelNotFoundException(StudentConstants.HOSTEL_NOT_FOUND);
 		}
 		Hostel hostel = optHostel.get();
+		student.setHostel(hostel);
 		
 		
 		
@@ -64,17 +70,21 @@ public class StudentServiceImpl implements IStudentService{
 		Room room =optRoom.get();
 		student.setRoom(room);
 		
-		student.setName(studentdto.getName());
+		student.setName(studentdto.getName().toLowerCase());
 		student.setDob(studentdto.getDob());
 		student.setEmailId(studentdto.getEmailId());
 		student.setContactNumber(studentdto.getContactNumber());
 		student.setGender(studentdto.getGender());
 		student.setAddress(studentdto.getAddress());
-		student.setImage(studentdto.getImage());
+		student.setImage("image");
+		Student savedStudent = studentdao.save(student);
+		Student newStudent =studentdao.getById(savedStudent.getStudentId());
+		newStudent.setImage(studentdto.getName()+savedStudent.getStudentId().toString());
+		Student savedStudent1 = studentdao.save(student);
 		
 		
 		
-		return null;
+		return savedStudent1;
 	}
 	
 	private Boolean checkPhoneNumber(String phone){
@@ -89,33 +99,53 @@ public class StudentServiceImpl implements IStudentService{
 	}
 
 	@Override
-	public List<Student> getStudent() throws StudentNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Student> getStudents() throws StudentNotFoundException {
+		List<Student> students = studentdao.findAll();
+		if (students.isEmpty()) {
+			throw new StudentNotFoundException();
+		}
+		return students;
 	}
 
 	@Override
-	public Student removeStudentById() throws StudentNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public Student removeStudentById(Integer studentId) throws StudentNotFoundException {
+		Optional<Student> optStudent = studentdao.findById(studentId);
+		if(optStudent.isEmpty()) {
+			throw new StudentNotFoundException();
+		}
+		Student student =optStudent.get();
+		studentdao.deleteById(studentId);
+		
+		
+		return student;
 	}
 
 	@Override
-	public Student getStudentById() throws StudentNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public Student getStudentById(Integer studentId) throws StudentNotFoundException {
+		Optional<Student> optStudent = studentdao.findById(studentId);
+		if(optStudent.isEmpty()) {
+			throw new StudentNotFoundException();
+		}
+		Student student =optStudent.get();
+		return student;
 	}
 
 	@Override
-	public List<Student> getStudentsByName() throws StudentNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Student> getStudentsByName(String name) throws StudentNotFoundException {
+		List<Student> students = studentdao.findByNameContaining(name.toLowerCase());
+		if(students.isEmpty()) {
+			throw new StudentNotFoundException(StudentConstants.NO_STUDENT_WITH_THIS_NAME);
+		}
+		return students;
 	}
 
 	@Override
-	public Student getStudentByMobileNumber(String mobileNumber) throws StudentNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Student> getStudentByMobileNumber(String mobileNumber) throws StudentNotFoundException, MobileNumberNotFoundException {
+		List<Student> students=studentdao.findByContactNumber(mobileNumber);
+		if(students.isEmpty()) {
+			throw new MobileNumberNotFoundException(StudentConstants.MOBILE_NUMBER_NOT_FOUND);
+		}
+		return students;
 	}
 	
 
