@@ -165,10 +165,6 @@ public class StudentDto {
 		return roomId;
 	}
 
-
-
-
-
 	public void setRoomId(Integer roomId) {
 		this.roomId = roomId;
 	}

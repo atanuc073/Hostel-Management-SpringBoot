@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.hostelmgmt.dao.IHostelDao;
@@ -29,10 +30,13 @@ import com.cg.hostelmgmt.utils.StudentConstants;
 @Service
 @Transactional
 public class StudentServiceImpl implements IStudentService{
-	
+	@Autowired
 	private IStudentDao studentdao;
+	@Autowired
 	private IRoomDao roomdao;
+	@Autowired
 	private IHostelDao hosteldao;
+	@Autowired
 	private IWardenDao wardendao;
 	
 
@@ -40,20 +44,21 @@ public class StudentServiceImpl implements IStudentService{
 	public Student addStudent(StudentDto studentdto) throws WardenNotFoundException, HostelNotFoundException, RoomNotFoundException, PhoneNumberAlreadyExistsException, EmailIdAlreadyExistsException {
 		Student student = new Student();
 		
-		if(!this.checkPhoneNumber(studentdto.getContactNumber())) {
+		if(!checkPhoneNumber(studentdto.getContactNumber())) {
 			throw new PhoneNumberAlreadyExistsException(StudentConstants.CONTACT_NUMBER_ALREADY_EXISTS);
 		}
-		if(this.checkEmail(studentdto.getEmailId())) {
+		if(!checkEmail(studentdto.getEmailId())) {
 			throw new EmailIdAlreadyExistsException(StudentConstants.EMAIL_ALREADY_EXISTS);
 		}
-		
+		System.out.println("Line 1");
 		Optional<Warden> optWarden =wardendao.findById(studentdto.getWardenId());
 		if(optWarden.isEmpty()) {
 			throw new WardenNotFoundException(StudentConstants.WARDEN_NOT_FOUND);
 		}
+		System.out.println("Line2");
 		Warden warden =optWarden.get();
 		student.setWarden(warden);
-		
+		System.out.println("Line 3");
 		Optional<Hostel> optHostel = hosteldao.findById(studentdto.getHostelID());
 		if(optHostel.isEmpty()) {
 			throw new HostelNotFoundException(StudentConstants.HOSTEL_NOT_FOUND);
@@ -62,13 +67,14 @@ public class StudentServiceImpl implements IStudentService{
 		student.setHostel(hostel);
 		
 		
-		
+		System.out.println("Line 4");
 		Optional<Room> optRoom =roomdao.findById(studentdto.getRoomId());
 		if(optRoom.isEmpty()) {
 			throw new RoomNotFoundException(StudentConstants.ROOM_NOT_FOUND);
 		}
 		Room room =optRoom.get();
 		student.setRoom(room);
+		System.out.println("Line 5");
 		
 		student.setName(studentdto.getName().toLowerCase());
 		student.setDob(studentdto.getDob());
@@ -78,7 +84,9 @@ public class StudentServiceImpl implements IStudentService{
 		student.setAddress(studentdto.getAddress());
 		student.setImage("image");
 		Student savedStudent = studentdao.save(student);
+		System.out.println("hello");
 		Student newStudent =studentdao.getById(savedStudent.getStudentId());
+		System.out.println("world");
 		newStudent.setImage(studentdto.getName()+savedStudent.getStudentId().toString());
 		Student savedStudent1 = studentdao.save(student);
 		
@@ -88,7 +96,7 @@ public class StudentServiceImpl implements IStudentService{
 	}
 	
 	private Boolean checkPhoneNumber(String phone){
-		List<Student> students =studentdao.findByContactNumber(phone);
+		List<Student> students =studentdao.findByContactNumber(phone);;
 		return students.isEmpty();
 		
 	}

@@ -35,3 +35,17 @@ d
 Psrc/main/java/com/cg/hostelmgmt/exception/PhoneNumberAlreadyExistsException.java,1/b/1be105588991c0d94cee39bb48e48c96c2110aaf
 o
 ?src/main/java/com/cg/hostelmgmt/service/StudentServiceImpl.java,7/d/7ddcb758ba244360b25ccc7ac11226021eec5338
+|
+Lsrc/main/java/com/cg/hostelmgmt/exception/EmailIdAlreadyExistsException.java,6/f/6fe3cd43468c529582a7fa9a8f8f7373a4c61cf8
+|
+Lsrc/main/java/com/cg/hostelmgmt/exception/MobileNumberNotFoundException.java,a/1/a1d90f35df8071a62bb18b2d6d1e63e70081a9e5
+[
++src/main/resources/static/sql_statement.txt,a/5/a58eb36e5d5b6b188fc46b24d732899ec6001e88
+g
+7src/main/java/com/cg/hostelmgmt/dto/SuccessMessage.java,8/4/84824e04ee900d8d8e2301033aa093840b2b6436
+e
+5src/main/java/com/cg/hostelmgmt/dto/ErrorMessage.java,2/b/2b9b1a881cf4216b175932c4354296e13219481a
+n
+>src/main/java/com/cg/hostelmgmt/web/StudentCrudController.java,4/6/467b307555377f40f71f64555ccbb65d1afcd4a0
+i
+9src/main/java/com/cg/hostelmgmt/advice/StudentAdvice.java,4/a/4a87a6c9fe8c5b2bd7ac49f474e8a12d24d5cc92
